@@ -143,3 +143,27 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+
+-- -----------------------------------------------------
+-- Placeholder table for view `csci2141_project`.`TOP_RATED`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `csci2141_project`.`TOP_RATED` (`show_id` INT, `genre_id` INT, `prod_id` INT, `duration` INT, `show_language` INT, `time_slot_id` INT, `rating` INT);
+
+
+USE `csci2141_project`;
+
+-- -----------------------------------------------------
+-- View `csci2141_project`.`TOP_RATED`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `csci2141_project`.`TOP_RATED`;
+USE `csci2141_project`;
+CREATE  OR REPLACE VIEW `TOP_RATED` AS SELECT * FROM TV_SHOW where rating > 4;
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
