@@ -167,3 +167,41 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+ALTER TABLE `csci2141_project`.`EPISODE` 
+DROP FOREIGN KEY `EPISODE_ibfk_1`;
+
+ALTER TABLE `csci2141_project`.`EPISODE` 
+CHANGE COLUMN `season_id` `season_id` INT(11) NULL DEFAULT NULL ;
+
+ALTER TABLE `csci2141_project`.`EPISODE` 
+ADD CONSTRAINT `EPISODE_ibfk_1`
+  FOREIGN KEY (`season_id`)
+  REFERENCES `csci2141_project`.`SEASON` (`season_id`);
+
+
+-- -----------------------------------------------------
+-- Placeholder table for view `csci2141_project`.`TOP_RATED`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `csci2141_project`.`TOP_RATED` (`show_id` INT, `genre_id` INT, `prod_id` INT, `duration` INT, `show_language` INT, `time_slot_id` INT, `rating` INT);
+
+
+USE `csci2141_project`;
+
+-- -----------------------------------------------------
+-- View `csci2141_project`.`TOP_RATED`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `csci2141_project`.`TOP_RATED`;
+USE `csci2141_project`;
+CREATE  OR REPLACE VIEW `TOP_RATED` AS SELECT * FROM TV_SHOW where rating > 4;
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+
