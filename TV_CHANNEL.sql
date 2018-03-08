@@ -2,7 +2,7 @@ CREATE DATABASE  IF NOT EXISTS `csci2141_project` /*!40100 DEFAULT CHARACTER SET
 USE `csci2141_project`;
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
--- Host: 138.197.129.252    Database: csci2141_project
+-- Host: XYZ    Database: csci2141_project
 -- ------------------------------------------------------
 -- Server version	5.7.21-0ubuntu0.16.04.1
 
