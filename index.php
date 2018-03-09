@@ -1,21 +1,15 @@
-<?php 
-include("dbconnect.php");
-$query = "select * from production;";
-if ($stmt = $connection->prepare($query)) {
+<html>
+<head>
+</head>
+<body>
+<h2>Welcome to our project. This title should be changed.</h2>
 
-    /* execute statement */
-    $stmt->execute();
+What would you like to do?<br />
+<a href="add_production_company.php">Add a new production company</a>
+</body>
+</html>
 
-    /* bind result variables */
-    $stmt->bind_result($name, $code);
+<?php
 
-    /* fetch values */
-    while ($stmt->fetch()) {
-        printf ("%s (%s)\n", $name, $code);
-    }
-
-    /* close statement */
-    $stmt->close();
-}
 
 ?>
