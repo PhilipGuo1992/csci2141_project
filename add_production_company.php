@@ -1,5 +1,5 @@
 <?php
-include("/var/www/html/dbconnect.php");
+include("dbconnect.php");
 $query = "select * from PRODUCTION";
 ?>
 <form action="add_production_company.php" method="GET">
