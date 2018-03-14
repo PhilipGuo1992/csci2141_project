@@ -36,7 +36,7 @@ Alex's sample queries for the project:
 
 - search for episodes using any qualifier (similar to the LIKE command) so you can search via episode title or episode name
 
-- allow episodes to be searched with SOUNDEX (if your query is a little bit wrong, it will still work if the word can be prounced the same)
+- allow episodes to be searched with SOUNDEX (if your query is a little bit wrong, it will still work if the word can be prounced the same) https://stackoverflow.com/questions/29598065/how-to-query-soundex-in-mysql
 
 - searching via season number, episode number (advanced search)
 
