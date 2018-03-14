@@ -4,7 +4,7 @@ Alex's sample queries for the project:
 
 - find movies which are above a certain rating, between a rating, and below a rating
 
-- find movies which have a good relevance score (number of votes and rating combined mathematically)
+- find movies which have a good relevance score (number of votes and rating combined mathematically) using this https://www.evanmiller.org/how-not-to-sort-by-average-rating.html
 
 - rating divided by show duration (highest rating per minute of show watched)
 
