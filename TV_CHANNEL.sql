@@ -28,7 +28,6 @@ CREATE TABLE `contract` (
   `contractId` int(11) NOT NULL AUTO_INCREMENT,
   `showId` int(11) NOT NULL,
   `actorId` int(11) NOT NULL,
-  `actorType` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`contractId`),
   UNIQUE KEY `contract_id` (`contractId`),
   KEY `actor_id` (`actorId`),
@@ -37,15 +36,6 @@ CREATE TABLE `contract` (
   CONSTRAINT `CONTRACT_ibfk_2` FOREIGN KEY (`actorId`) REFERENCES `credit` (`creditId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `contract`
---
-
-LOCK TABLES `contract` WRITE;
-/*!40000 ALTER TABLE `contract` DISABLE KEYS */;
-/*!40000 ALTER TABLE `contract` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `credit`
@@ -66,15 +56,6 @@ CREATE TABLE `credit` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `credit`
---
-
-LOCK TABLES `credit` WRITE;
-/*!40000 ALTER TABLE `credit` DISABLE KEYS */;
-/*!40000 ALTER TABLE `credit` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `episode`
 --
 
@@ -83,27 +64,34 @@ DROP TABLE IF EXISTS `episode`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `episode` (
   `episodeId` int(15) NOT NULL AUTO_INCREMENT,
-  `dateCasted` date DEFAULT NULL,
+  `dateCasted` int(11) DEFAULT NULL,
   `runtimeMinutes` int(10) DEFAULT NULL,
   `seasonNumber` int(10) DEFAULT NULL,
   `episodeNumber` int(10) DEFAULT NULL,
   `averageRating` decimal(10,0) DEFAULT NULL,
   `showId` int(15) DEFAULT NULL,
+  `episodeName` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`episodeId`),
   UNIQUE KEY `episode_id_UNIQUE` (`episodeId`),
   KEY `EPSHOW_idx` (`showId`),
   CONSTRAINT `EPSHOW` FOREIGN KEY (`showId`) REFERENCES `tvshow` (`showId`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=259 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `episode`
+-- Table structure for table `episode_nums_tmp`
 --
 
-LOCK TABLES `episode` WRITE;
-/*!40000 ALTER TABLE `episode` DISABLE KEYS */;
-/*!40000 ALTER TABLE `episode` ENABLE KEYS */;
-UNLOCK TABLES;
+DROP TABLE IF EXISTS `episode_nums_tmp`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `episode_nums_tmp` (
+  `tconst` text,
+  `parentTconst` text,
+  `seasonNumber` text,
+  `episodeNumber` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `genre`
@@ -121,16 +109,6 @@ CREATE TABLE `genre` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `genre`
---
-
-LOCK TABLES `genre` WRITE;
-/*!40000 ALTER TABLE `genre` DISABLE KEYS */;
-INSERT INTO `genre` VALUES (1,'Action Series'),(2,'Adventure Series'),(3,'Animated series'),(4,'Documentary'),(5,'Drama'),(6,'Educational'),(7,'Game Show'),(8,'Late night television'),(9,'Comedy');
-/*!40000 ALTER TABLE `genre` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `movie`
 --
 
@@ -140,23 +118,35 @@ DROP TABLE IF EXISTS `movie`;
 CREATE TABLE `movie` (
   `movieId` int(11) NOT NULL AUTO_INCREMENT,
   `movieName` varchar(45) NOT NULL,
-  `releaseDate` date NOT NULL,
-  `runtime` int(15) NOT NULL,
-  `prodId` int(11) NOT NULL,
+  `releaseDate` int(11) DEFAULT NULL,
+  `runtime` int(15) DEFAULT NULL,
+  `prodId` int(11) DEFAULT NULL,
+  `isAdult` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`movieId`),
   KEY `prod_id_idx` (`prodId`),
   CONSTRAINT `prod_id` FOREIGN KEY (`prodId`) REFERENCES `production` (`prodId`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=251 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `movie`
+-- Table structure for table `movies_tmp`
 --
 
-LOCK TABLES `movie` WRITE;
-/*!40000 ALTER TABLE `movie` DISABLE KEYS */;
-/*!40000 ALTER TABLE `movie` ENABLE KEYS */;
-UNLOCK TABLES;
+DROP TABLE IF EXISTS `movies_tmp`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `movies_tmp` (
+  `tconst` text,
+  `titleType` text,
+  `primaryTitle` text,
+  `originalTitle` text,
+  `isAdult` int(11) DEFAULT NULL,
+  `startYear` int(11) DEFAULT NULL,
+  `endYear` text,
+  `runtimeMinutes` text,
+  `genres` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `production`
@@ -172,16 +162,6 @@ CREATE TABLE `production` (
   UNIQUE KEY `prod_id` (`prodId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `production`
---
-
-LOCK TABLES `production` WRITE;
-/*!40000 ALTER TABLE `production` DISABLE KEYS */;
-INSERT INTO `production` VALUES (1,'Sony Pictures'),(2,'LIONSGATE'),(3,'Paramount Pictures'),(4,'Universal'),(5,'Warner Bros.'),(6,'MGM'),(7,'The Walt Disney');
-/*!40000 ALTER TABLE `production` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `profession`
@@ -202,15 +182,6 @@ CREATE TABLE `profession` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `profession`
---
-
-LOCK TABLES `profession` WRITE;
-/*!40000 ALTER TABLE `profession` DISABLE KEYS */;
-/*!40000 ALTER TABLE `profession` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `subtitle`
 --
 
@@ -225,17 +196,26 @@ CREATE TABLE `subtitle` (
   UNIQUE KEY `subtitle_id` (`subtitleId`),
   KEY `subshow_idx` (`showId`),
   CONSTRAINT `subshow` FOREIGN KEY (`showId`) REFERENCES `tvshow` (`showId`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `subtitle`
+-- Table structure for table `timeslot`
 --
 
-LOCK TABLES `subtitle` WRITE;
-/*!40000 ALTER TABLE `subtitle` DISABLE KEYS */;
-/*!40000 ALTER TABLE `subtitle` ENABLE KEYS */;
-UNLOCK TABLES;
+DROP TABLE IF EXISTS `timeslot`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `timeslot` (
+  `timeslot_id` int(11) NOT NULL AUTO_INCREMENT,
+  `episode_id` int(11) DEFAULT NULL,
+  `timeslot_start` datetime DEFAULT NULL,
+  `timeslot_end` datetime DEFAULT NULL,
+  PRIMARY KEY (`timeslot_id`),
+  UNIQUE KEY `timeslot_id` (`timeslot_id`),
+  KEY `episode_id` (`episode_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8399 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `tvshow`
@@ -246,10 +226,6 @@ DROP TABLE IF EXISTS `tvshow`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tvshow` (
   `showId` int(15) NOT NULL AUTO_INCREMENT,
-  `isAdult` tinyint(4) DEFAULT NULL,
-  `startYear` date DEFAULT NULL,
-  `endYear` date DEFAULT NULL,
-  `runtimeMinutes` int(10) DEFAULT NULL,
   `genreId` int(11) DEFAULT NULL,
   `showName` varchar(45) DEFAULT NULL,
   `prodId` int(11) NOT NULL,
@@ -259,15 +235,6 @@ CREATE TABLE `tvshow` (
   KEY `prodshow_idx` (`prodId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tvshow`
---
-
-LOCK TABLES `tvshow` WRITE;
-/*!40000 ALTER TABLE `tvshow` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tvshow` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Dumping events for database 'csci2141_project'
@@ -286,4 +253,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-03-16 18:38:14
+-- Dump completed on 2018-03-18 10:20:03
