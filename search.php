@@ -1,11 +1,11 @@
 <?php require_once("dbconnect.php"); ?>
 <style type="text/css">
-	td.time {background-color:#292929;color:rgb(255,255,255,0.5);font-family:Helvetica!important;width:95px;}
-	td.time:hover {background-color:#caad2d;color:#000;}
-	td {font-family: Arial, sans-serif;font-size:15px; }
-	td {padding: 20px;}
-	td.show {background-color:#1f1f1f;color:#fff;width:550px;}
-	td.show div {float:right;padding-left:5px;}
+	table#results td.time {background-color:#292929;color:rgb(255,255,255,0.5);font-family:Helvetica!important;width:95px;}
+	table#results td.time:hover {background-color:#caad2d;color:#000;}
+	table#results td {font-family: Arial, sans-serif;font-size:15px; }
+	table#results td {padding: 20px;}
+	table#results td.show {background-color:#1f1f1f;color:#fff;width:550px;}
+	table#results td.show div {float:right;padding-left:5px;}
 	a {text-decoration:none;}
 	a:hover {font-weight:bold;}
 	body {background-color:#17181c;color:#fff;}
@@ -36,18 +36,34 @@
     display: table;
     clear: both;
 }
+tr#deleteslot {
+	font-size:40px;background-color:rgba(255, 65, 54, 0.3);
+}
+tr#deleteslot:hover {
+	background-color:rgba(255, 65, 54, 1);cursor:pointer;
+}
+
+tr#addslot {
+	background-color:rgba(46, 204, 64, 0.3);
+}
+
+tr#addslot:hover {
+	background-color:rgba(46, 204, 64, 1);cursor:pointer;
+}
+
+td#admin {height:40px;}
+table#admin {display:none;}
 </style>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-  <script>
-  $( function() {
-    $( "#datepicker" ).datepicker();
-  } );
-  </script>
-
   <script type="text/javascript">
+
+// https://www.w3schools.com/jquery/jquery_css.asp
+  	$(document).on('click', 'button#admin-button', function () {
+  		$("table#admin").toggle();
+  	});
   	//https://stackoverflow.com/questions/38007345/how-to-show-ajax-response-as-modal-popup
 $(document).on('click', 'div.timeslot a', function () {
 	// https://www.w3schools.com/jquery/jquery_dom_get.asp
@@ -76,6 +92,8 @@ $(document).on('click', 'div.timeslot a', function () {
 Find all shows playing <select name="boolOp"><option value="on this date">on this date</option><option value="after this date">after this date</option><option value="before this date">before this date</option></select> <input type="text" name="date" id="datepicker" placeholder="Click to set date"/>
 <button type="submit" value="Submit">Submit</button>
 </form>
+
+<button type="button" id="admin-button">Toggle admin interface</button>
 </div>
 <div class="column right">
 <?php
@@ -92,7 +110,7 @@ if ($boolOp == "before this date") $mysqlOp = " > STR_TO_DATE('" . $date . "  00
 
 $query = "select DATE_FORMAT(timeslot_start, \"%H:%i\"), CONCAT(showName, ' -- ', \"S\", seasonNumber, \" E\", episodeNumber), timeslot_id from timeslot join tvshow on tvshow.showId = timeslot.showId join episode on episode.showId = tvshow.showId WHERE timeslot_start " . $mysqlOp . " order by timeslot_start LIMIT 50";
 ?>
-<table>
+<table id="results">
 
 
 <?php	
@@ -107,7 +125,7 @@ $query = "select DATE_FORMAT(timeslot_start, \"%H:%i\"), CONCAT(showName, ' -- '
     while ($row = mysqli_fetch_row($result)) {
         echo("<tr>");
         echo "<td class='time'>" . $row[0] . "</td>";
-        echo "<td class='show'><div>" . $row[1] . "</div><br /><div class='timeslot' style='width:300px;color:rgb(135, 135, 135)'>sample text with some information relating to each show, maybe including the release date and other information<br /><a href='#' timeslot-id='" . $row[2] . "' style='float:right;font-size:11px;color:rgb(202, 173, 45);'>MORE INFO for #" . $row[2] . "</a></div><img src='https://placem.at/people?w=227&h=87&random=" . sha1($row[1]) ."' /></td>";
+        echo "<td class='show'><div>" . $row[1] . "</div><br /><div class='timeslot' style='width:300px;color:rgb(135, 135, 135)'>sample text with some information relating to each show, maybe including the release date and other information<br /><a href='#' timeslot-id='" . $row[2] . "' style='float:right;font-size:11px;color:rgb(202, 173, 45);'>MORE INFO for #" . $row[2] . "</a></div><img src='https://placem.at/people?w=227&h=87&random=" . sha1($row[1]) ."' /></td><td id='admin'><table id='admin'><tr id='addslot'><td>^</td></tr><tr id='deleteslot'><td>X</td></tr><tr id='addslot'><td>V</td></tr></table></td>";
             
         echo("</tr>");
         }
