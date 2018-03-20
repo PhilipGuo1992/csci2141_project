@@ -5,7 +5,7 @@ sleep(2);
 $connection = db_connect();
 
 $output = array();
-$query = "select fullName, age, gender from timeslot natural join credit where timeslot_id = " . $_GET["timeslotId"];
+$query = "select fullName, age, gender, profession from timeslot natural join credit join profession on credit.creditId = profession.creditId where timeslot_id = " . $_GET["timeslotId"];
     // http://php.net/manual/en/mysqli-result.fetch-row.php
     if ($result = mysqli_query($connection, $query)) {
 
@@ -21,7 +21,7 @@ echo json_encode($output);
 } else {
 	echo "Credits:\n";
 	foreach ($output as $anOutput) {
-		echo "Name: " . $anOutput[0] . " Age: " . $anOutput[1] . " Gender: " . $anOutput[2] . "\n";
+		echo "Name: " . $anOutput[0] . " Age: " . $anOutput[1] . " Gender: " . $anOutput[2] . " Profession: " . $anOutput[3] . "\n";
 	}
 }
 
