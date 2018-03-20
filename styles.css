@@ -1,0 +1,77 @@
+table#results td.time {
+    background-color: #292929;
+    color: rgb(255,255,255,0.5);
+    font-family: Helvetica!important;
+    width: 95px;
+}
+table#results td.time:hover {
+    background-color: #caad2d;
+    color: #000;
+}
+table#results td {
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+}
+table#results td {
+    padding: 20px;
+}
+table#results td.show {
+    background-color: #1f1f1f;
+    color: #fff;
+    width: 550px;
+}
+table#results td.show div {
+    float: right;
+    padding-left: 5px;
+}
+a {
+    text-decoration: none;
+}
+a:hover {
+    font-weight: bold;
+}
+body {
+    background-color: #17181c;
+    color: #fff;
+}
+
+/* https://www.w3schools.com/css/css3_multiple_columns.asp */
+* {
+    box-sizing: border-box;
+}
+.column {
+    float: left;
+    padding: 10px;
+}
+.left {
+    width: 25%;
+}
+.right {
+    width: 75%;
+}
+.row:after {
+    clear: both;
+    content: "";
+    display: table;
+}
+tr#deleteslot {
+    background-color: rgba(255, 65, 54, 0.3);
+    font-size: 40px;
+}
+tr#deleteslot:hover {
+    background-color: rgba(255, 65, 54, 1);
+    cursor: pointer;
+}
+tr#addslot {
+    background-color: rgba(46, 204, 64, 0.3);
+}
+tr#addslot:hover {
+    background-color: rgba(46, 204, 64, 1);
+    cursor: pointer;
+}
+td#admin {
+    height: 40px;
+}
+table#admin {
+    display: none;
+}

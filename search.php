@@ -1,90 +1,15 @@
 <?php require_once("dbconnect.php"); ?>
-<style type="text/css">
-	table#results td.time {background-color:#292929;color:rgb(255,255,255,0.5);font-family:Helvetica!important;width:95px;}
-	table#results td.time:hover {background-color:#caad2d;color:#000;}
-	table#results td {font-family: Arial, sans-serif;font-size:15px; }
-	table#results td {padding: 20px;}
-	table#results td.show {background-color:#1f1f1f;color:#fff;width:550px;}
-	table#results td.show div {float:right;padding-left:5px;}
-	a {text-decoration:none;}
-	a:hover {font-weight:bold;}
-	body {background-color:#17181c;color:#fff;}
-</style>
-<!-- https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_two_columns_unequal -->
-<style>
-* {
-    box-sizing: border-box;
-}
-
-/* Create two unequal columns that floats next to each other */
-.column {
-    float: left;
-    padding: 10px;
-}
-
-.left {
-  width: 25%;
-}
-
-.right {
-  width: 75%;
-}
-
-/* Clear floats after the columns */
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-tr#deleteslot {
-	font-size:40px;background-color:rgba(255, 65, 54, 0.3);
-}
-tr#deleteslot:hover {
-	background-color:rgba(255, 65, 54, 1);cursor:pointer;
-}
-
-tr#addslot {
-	background-color:rgba(46, 204, 64, 0.3);
-}
-
-tr#addslot:hover {
-	background-color:rgba(46, 204, 64, 1);cursor:pointer;
-}
-
-td#admin {height:40px;}
-table#admin {display:none;}
-</style>
+<html>
+<head>
+<link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="scripts.js"></script>
+</head>
+<body>
 
-  <script type="text/javascript">
-
-// https://www.w3schools.com/jquery/jquery_css.asp
-  	$(document).on('click', 'button#admin-button', function () {
-  		$("table#admin").toggle();
-  	});
-  	//https://stackoverflow.com/questions/38007345/how-to-show-ajax-response-as-modal-popup
-$(document).on('click', 'div.timeslot a', function () {
-	// https://www.w3schools.com/jquery/jquery_dom_get.asp
-        var $data = $(this).attr('timeslot-id');
-         var url = "http://138.197.129.252/timeslotToCreditsApi.php?timeslotId=" + $data;
-        $.ajax({
-            type: 'GET',
-            url: url,
-            success: function (output) {
-            alert(output);
-            // https://stackoverflow.com/questions/8628413/jquery-find-the-element-with-a-particular-custom-attribute
-            $("div[timeslot-id=" + $data + "]").append(output);
-            },
-            error: function(output){
-            alert("fail");
-            }
-        });
-    });
-
-  </script>
-  <h1 style='font-family:Helvetica'>Search for a timeslot</h1>
+<h1 style='font-family:Helvetica'>Search for a timeslot</h1>
 <div class="row">
   <div class="column left">
 
@@ -129,8 +54,6 @@ $query = "select DATE_FORMAT(timeslot_start, \"%H:%i\"), CONCAT(showName, ' -- '
             
         echo("</tr>");
         }
-
-        
     }
 
 	?>
@@ -138,4 +61,4 @@ $query = "select DATE_FORMAT(timeslot_start, \"%H:%i\"), CONCAT(showName, ' -- '
   </div>
 </div>
 
-<?php echo "MYSQL QUERY: <code style='background-color:#000'>RUNNING: " . $query . "</code>"; ?>
+<?php echo "<code style='background-color:#000'>QUERY: " . $query . "</code>"; ?>
