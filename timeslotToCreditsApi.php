@@ -16,6 +16,13 @@ $query = "select fullName, age, gender from timeslot natural join credit where t
 
 }
 
+if (isset($_GET["json"])) {
 echo json_encode($output);
+} else {
+	echo "Credits:\n";
+	foreach ($output as $anOutput) {
+		echo "Name: " . $anOutput[0] . " Age: " . $anOutput[1] . " Gender: " . $anOutput[2] . "\n";
+	}
+}
 
 ?>
