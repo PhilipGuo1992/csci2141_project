@@ -46,6 +46,28 @@
     $( "#datepicker" ).datepicker();
   } );
   </script>
+
+  <script type="text/javascript">
+  	//https://stackoverflow.com/questions/38007345/how-to-show-ajax-response-as-modal-popup
+$(document).on('click', 'div.timeslot a', function () {
+	// https://www.w3schools.com/jquery/jquery_dom_get.asp
+        var $data = $(this).attr('timeslot-id');
+         var url = "http://138.197.129.252/timeslotToCreditsApi.php?timeslotId=" + $data;
+        $.ajax({
+            type: 'GET',
+            url: url,
+            success: function (output) {
+            alert(output);
+            // https://stackoverflow.com/questions/8628413/jquery-find-the-element-with-a-particular-custom-attribute
+            $("div[timeslot-id=" + $data + "]").append(output);
+            },
+            error: function(output){
+            alert("fail");
+            }
+        });
+    });
+
+  </script>
   <h1 style='font-family:Helvetica'>Search for a timeslot</h1>
 <div class="row">
   <div class="column left">
@@ -85,7 +107,7 @@ $query = "select DATE_FORMAT(timeslot_start, \"%H:%i\"), CONCAT(showName, ' -- '
     while ($row = mysqli_fetch_row($result)) {
         echo("<tr>");
         echo "<td class='time'>" . $row[0] . "</td>";
-        echo "<td class='show'><div>" . $row[1] . "</div><br /><div style='width:300px;color:rgb(135, 135, 135)'>sample text with some information relating to each show, maybe including the release date and other information<br /><a href='#moreinfo' style='float:right;font-size:11px;color:rgb(202, 173, 45);'>MORE INFO for #" . $row[2] . "</a></div><img src='https://placem.at/people?w=227&h=87&random=" . sha1($row[1]) ."' /></td>";
+        echo "<td class='show'><div>" . $row[1] . "</div><br /><div class='timeslot' style='width:300px;color:rgb(135, 135, 135)'>sample text with some information relating to each show, maybe including the release date and other information<br /><a href='#' timeslot-id='" . $row[2] . "' style='float:right;font-size:11px;color:rgb(202, 173, 45);'>MORE INFO for #" . $row[2] . "</a></div><img src='https://placem.at/people?w=227&h=87&random=" . sha1($row[1]) ."' /></td>";
             
         echo("</tr>");
         }
