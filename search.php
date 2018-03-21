@@ -10,6 +10,7 @@
 <body>
 
 <h1 style='font-family:Helvetica'>Search for a timeslot</h1>
+<a href="search.php?boolOp=allShows" style="float:right;color:#fff;padding-left:20px">All Shows</a> <a href="search.php?boolOp=allMovies" style="float:right;color:#fff;padding-left:20px">Movies</a>
 <div class="row">
   <div class="column left">
 
@@ -18,7 +19,7 @@ Find all shows playing <select name="boolOp"><option value="on this date">on thi
 <button type="submit" value="Submit">Submit</button>
 </form>
 
-<button type="button" id="admin-button">Toggle admin interface</button>
+<button type="button" id="admin-button" onclick="javascript:document.location='http://138.197.129.252/add.php'">Toggle admin interface</button>
 </div>
 <div class="column right">
 <?php
@@ -28,12 +29,16 @@ $boolOp = $_GET["boolOp"];
 
 $mysqlOp = "";
 
-if ($boolOp == "on this date") $mysqlOp = "> STR_TO_DATE('" . $date . "  00:00:00', '%m/%d/%Y %H:%i:%s') and timeslot_start < STR_TO_DATE('" . $date . "  23:59:59', '%m/%d/%Y %H:%i:%s')";
+if ($boolOp == "on this date") $mysqlOp = "timeslot_start  > STR_TO_DATE('" . $date . "  00:00:00', '%m/%d/%Y %H:%i:%s') and timeslot_start < STR_TO_DATE('" . $date . "  23:59:59', '%m/%d/%Y %H:%i:%s')";
 
-if ($boolOp == "after this date") $mysqlOp = " < STR_TO_DATE('" . $date . "  00:00:00', '%m/%d/%Y %H:%i:%s')";
-if ($boolOp == "before this date") $mysqlOp = " > STR_TO_DATE('" . $date . "  00:00:00', '%m/%d/%Y %H:%i:%s')";
+if ($boolOp == "after this date") $mysqlOp = "timeslot_start  < STR_TO_DATE('" . $date . "  00:00:00', '%m/%d/%Y %H:%i:%s')";
+if ($boolOp == "before this date") $mysqlOp = "timeslot_start  > STR_TO_DATE('" . $date . "  00:00:00', '%m/%d/%Y %H:%i:%s')";
+if ($boolOp == "allShows") $mysqlOp = "1 = 1";
+$query = "select DATE_FORMAT(timeslot_start, \"%H:%i\"), CONCAT(showName, ' -- ', \"S\", seasonNumber, \" E\", episodeNumber), timeslot_id from timeslot  join episode using(episodeId) join tvshow using(showId) WHERE " . $mysqlOp . " order by timeslot_start";
 
-$query = "select DATE_FORMAT(timeslot_start, \"%H:%i\"), CONCAT(showName, ' -- ', \"S\", seasonNumber, \" E\", episodeNumber), timeslot_id from timeslot join tvshow on tvshow.showId = timeslot.showId join episode on episode.showId = tvshow.showId WHERE timeslot_start " . $mysqlOp . " order by timeslot_start LIMIT 50";
+if ($boolOp == "allMovies") {
+	$query = "select movieName, ratings, timeslot_id from movie";
+}
 ?>
 <table id="results">
 
