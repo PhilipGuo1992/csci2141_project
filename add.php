@@ -63,7 +63,7 @@ tvshow
 		<td>Subtitle</td>
 		<td><a href="delete_subtitle.php">Delete subtitle</a></td>
 		<td><a href="update_subtitle.php">Update subtitle</a></td>
-		<td><a href="create_subtitle.php">Create New</a></td>
+		<td><a href="add_subtitle.php">Add a new subtitle</a></td>
 	</tr>
 	<tr>
 		<td>Timeslot</td>
