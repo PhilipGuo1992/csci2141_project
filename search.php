@@ -15,7 +15,7 @@
   <div class="column left">
 
 <form action="search.php" method="GET">
-Find all shows playing <select name="boolOp"><option value="on this date">on this date</option><option value="after this date">after this date</option><option value="before this date">before this date</option></select> <input type="text" name="date" id="datepicker" placeholder="Click to set date"/>
+Find all shows playing <select name="boolOp"><!--<option value="on this date">on this date</option>--><option value="after this date">after this date</option><option value="before this date">before this date</option></select> <input type="text" name="date" id="datepicker" placeholder="Click to set date"/>
 <button type="submit" value="Submit">Submit</button>
 </form>
 
