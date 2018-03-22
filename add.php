@@ -2,14 +2,16 @@
 include("dbconnect.php");
 
 $addType = $_GET["type"];
+$method = $_GET["method"];
 
 if ($addType == "prod") {
+	if ($method == "add") {
 ?>
 
 <form action="add.php" method="GET">
-<h3>Enter name of a new production company.</h3>
+<h3>Add a production company</h3>
 <input id="prod_name" placeholder="Name of new company." name="prod_name"></input>
-<input name="type" value="<?php echo $addType; ?>" style="display:none"></input>
+<input name="type" value="<?php echo $method; ?>" style="display:none"></input>
 <input type="submit"></input>
 </form>
 
@@ -20,9 +22,31 @@ if (isset($_GET["prod_name"])) {
         echo "Company has been added! Check the bottom of this table.";
     }
 }
+
+} else if ($method == "update") {
+	// update method
 ?>
 
+	<form action="add.php" method="GET">
+<h3>Update a production company</h3>
+<input id="prod_name" placeholder="Name of new company." name="prod_name"></input>
+<input name="type" value="<?php echo $method; ?>" style="display:none"></input>
+<input type="submit"></input>
+</form>
+
+<?php
+} else if ($method == "delete") {
+	// delete method
+?>
+<form action="add.php" method="GET">
+<h3>Delete a production company</h3>
 <select name="prod_companies"><?php printQueryToOptionList("select * from production"); ?></select>
+<input name="type" value="<?php echo $method; ?>" style="display:none"></input>
+<input type="submit"></input>
+</form>
+<?php } ?>
+
+
 
 <?php } else { ?>
 
