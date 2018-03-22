@@ -4,7 +4,7 @@ include("dbconnect.php");
 $method = $_GET["method"];
 
 
-$genreType = $_GET["genre_type"];
+$genreId = $_GET["genre_type"];
 
 $error = $_GET["error"];
 $success = $_GET["success"];
@@ -19,7 +19,7 @@ $success = $_GET["success"];
 
 <?php
 if (isset($prodCompanies)) {
-    if ($stmt = $connection->prepare("delete from genre where genreType = " . $genreType)) {
+    if ($stmt = $connection->prepare("delete from genre where genreId = " . $genreId)) {
         $stmt->execute();
 
         header("Location: delete_genre.php?success");
