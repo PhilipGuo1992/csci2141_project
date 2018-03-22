@@ -61,15 +61,15 @@ if (isset($_GET["prod_name"])) {
 	</tr>
 	<tr>
 		<td>Genre</td>
-		<td><a href="add.php?type=genre&method=newMovie">To a new movie...</a></td>
-		<td><a href="add.php?type=genre&method=existingMovie">To an existing movie...</a></td>
-		<td><a href="add.php?type=genre&method=new">Create New</a></td>
+		<td><a href="delete_genre.php">Delete the Genre</a></td>
+		<td><a href="update_genre.php">Modify an existing Genre</a></td>
+		<td><a href="add_genre.php">Add a new Genre</a></td>
 	</tr>
 	<tr>
 		<td>Production Company</td>
-		<td><a href="add.php?type=prod&method=newMovie">Add a new Genre</a></td>
-		<td><a href="addgenre.php?type=prod&method=existingMovie">Delete an existing Genre</a></td>
-		<td><a href="add.php?type=prod&method=new">Modify?</a></td>
+		<td><a href="add.php?type=prod&method=newMovie">To a new </a></td>
+		<td><a href="add.php?type=credit&method=existingMovie">Delete an existing Production company</a></td>
+		<td><a href="add.php?type=prod&method=new">Create new</a></td>
 	</tr>
 	<tr>
 		<td>Credit</td>
