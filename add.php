@@ -67,9 +67,9 @@ if (isset($_GET["prod_name"])) {
 	</tr>
 	<tr>
 		<td>Production Company</td>
-		<td><a href="add.php?type=prod&method=newMovie">To a new movie...</a></td>
-		<td><a href="add.php?type=prod&method=existingMovie">To an existing movie...</a></td>
-		<td><a href="add.php?type=prod&method=new">Create New</a></td>
+		<td><a href="add.php?type=prod&method=newMovie">Add a new Genre</a></td>
+		<td><a href="addgenre.php?type=prod&method=existingMovie">Delete an existing Genre</a></td>
+		<td><a href="add.php?type=prod&method=new">Modify?</a></td>
 	</tr>
 	<tr>
 		<td>Credit</td>
