@@ -18,13 +18,13 @@ $success = $_GET["success"];
 
 
 <?php
-if (isset($prodCompanies)) {
+if (isset($genreId)) {
     if ($stmt = $connection->prepare("delete from genre where genreId = " . $genreId)) {
         $stmt->execute();
 
         header("Location: delete_genre.php?success");
     }
-} else if (empty($prodCompanies)) {
+} else if (empty($genreId)) {
 	header("Location: delete_genre.php?error");
 }
 
