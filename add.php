@@ -11,6 +11,12 @@
 		<td><a href="add_genre.php">Add a new Genre</a></td>
 	</tr>
 	<tr>
+		<td>Subtitles</td>
+		<td><a href="delete_subtitle.php">Delete a subtitle</a></td>
+		<td><a href="update_subtitle.php">Modify an existing subtitle</a></td>
+		<td><a href="add_subtitle.php">Add a new subtitle</a></td>
+	</tr>
+	<tr>
 		<td>Production Company</td>
 		<td><a href="delete_production.php">Delete a production company</a></td>
 		<td><a href="modify_production.php">Modify existing production company</a></td>
