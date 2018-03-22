@@ -24,7 +24,7 @@ if (isset($genreId)) {
 
         header("Location: delete_genre.php?success");
     }
-} else if (empty($genreId) && && !isset($error) && !isset($success)) {
+} else if (empty($genreId) && !isset($error) && !isset($success)) {
 	header("Location: delete_genre.php?error");
 }
 
