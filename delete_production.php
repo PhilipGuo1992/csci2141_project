@@ -21,7 +21,7 @@ if (isset($prodCompanies)) {
         $stmt->execute();
         header("Location: delete_production.php?success");
     }
-} else if (empty($prodCompanies)) {
+} else if (empty($prodCompanies) && !isset($error) && !isset($success)) {
 	header("Location: delete_production.php?error");
 }
 
