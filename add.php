@@ -1,7 +1,7 @@
 <?php
 include("dbconnect.php");
 
-$table = "movie";
+$table = $_GET["table"];
 $method = "add";
 ?>
 <head>
