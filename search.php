@@ -37,7 +37,7 @@ if ($boolOp == "allShows") $mysqlOp = "1 = 1";
 $query = "select DATE_FORMAT(timeslot_start, \"%H:%i\"), CONCAT(showName, ' -- ', \"S\", seasonNumber, \" E\", episodeNumber), timeslot_id from timeslot  join episode using(episodeId) join tvshow using(showId) WHERE " . $mysqlOp . " order by timeslot_start";
 
 if ($boolOp == "allMovies") {
-	$query = "select movieName, ratings, timeslot_id from movie";
+	$query = "select movieName, ratings, timeslot_id from movie join timeslot using(movieId)";
 }
 ?>
 <table id="results">
