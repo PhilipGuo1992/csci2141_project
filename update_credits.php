@@ -6,7 +6,7 @@ $newCredit = $_GET["newCredit"];
 $oldCredit = $_GET["oldCredit"];
 ?>
 
-<form action="update_genre.php" method="GET">
+<form action="update_credits.php" method="GET">
 <h3>Modify the Credit Name</h3>
 <select name="oldCredit"><?php printQueryToOptionList("select creditId,fullName from credit"); ?></select>
 <input id="newCredit" placeholder="Change the name to..." name="newCredit"></input>
