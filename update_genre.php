@@ -1,5 +1,5 @@
 <?php
-include("dbconnect.php");
+include("dbconnect_local.php");
 
 $method = $_GET["method"];
 $newGenre = $_GET["newGenre"];
@@ -8,6 +8,7 @@ $oldGenre = $_GET["oldGenre"];
 
 <form action="update_genre.php" method="GET">
 <h3>Modify the Genre type</h3>
+
 <select name="oldGenre"><?php printQueryToOptionList("select * from genre"); ?></select>
 <input id="newGenre" placeholder="Change the name to..." name="newGenre"></input>
 <input type="submit"></input>
