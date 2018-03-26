@@ -16,7 +16,7 @@ $oldGenre = $_GET["oldGenre"];
 
 <?php
 if (isset($newGenre) && isset($oldGenre)) {
-    if ($stmt = $connection->prepare("update genre set genreType = '" . $newGenre . "' where prodId = " . $oldGenre)) {
+    if ($stmt = $connection->prepare("update genre set genreType = '" . $newGenre . "' where genreId = " . $oldGenre)) {
         $stmt->execute();
         echo "Genre has been updated! Please refresh the page to see your changes.<br />";
     }

@@ -26,7 +26,7 @@ tvshow
 		<tr>
 		<td>Credit</td>
 		<td><a href="delete_credits.php">Delete credit(s)</a></td>
-		<td><a href="modify_credits.php">Modify existing credits</a></td>
+		<td><a href="update_credits.php">Modify existing credits</a></td>
 		<td><a href="add_credits.php">Create New</a></td>
 	</tr>
 		<tr>
