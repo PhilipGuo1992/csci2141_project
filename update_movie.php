@@ -17,7 +17,7 @@ $oldName = $_GET["oldName"];
 
 
 <?php
-if (isset($newName) && isset($oldName)) {
+if (true) {
     if ($stmt = $connection->prepare("update credit set movieName = '" . $newName . "' where movieId = " . $movieId)) {
         $stmt->execute();
         echo "Movie has been updated! Please refresh the page to see your changes.<br />";
@@ -29,7 +29,7 @@ if (isset($newName) && isset($oldName)) {
 } 
 
 	else if (empty($newCredit)) {
-	echo "The Genre name is empty. Please enter in a non-empty name.<br />";
+	echo "The Movie name is empty. Please enter in a non-empty name.<br />";
 }
 
 ?>
