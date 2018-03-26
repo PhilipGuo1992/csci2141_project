@@ -2,18 +2,27 @@
 error_reporting(E_ALL);
 include("dbconnect.php");
 
-$method = $_GET["method"];
+
+$creditId = null;
+if (isset($_GET["creditId"])) {
+	$creditId = $_GET["creditId"];
+}
+
+$error = null;
+if (isset($_GET["error"])) {
+	$error = $_GET["error"];
+}
 
 
-$creditId = $_GET["creditId"];
-
-$error = $_GET["error"];
-$success = $_GET["success"];
+$success = null;
+if (isset($_GET["success"])) {
+	$success = $_GET["success"];
+}
 ?>
 
 <form action="delete_credits.php" method="GET">
 <h3>Delete the existing Credit. Select a Credit Name you want to delete and press submit.</h3>
-<select name="creditId"><?php printQueryToOptionList("select creditId,fullName from credit"); ?></select>
+<select name="creditId"><?php printMultiQueryToOptionList("select creditId,fullName from credit"); ?></select>
 <input type="submit"></input>
 </form>
 
