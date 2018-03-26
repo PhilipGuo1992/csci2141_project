@@ -1,5 +1,5 @@
 <?php
-include("dbconnect_local.php");
+include("dbconnect.php");
 
 $method = $_GET["method"];
 $newRegion = $_GET["newRegion"];
