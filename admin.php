@@ -65,12 +65,12 @@ tvshow
 		<td><a href="update_region.php">Update an existing region</a></td>
 		<td><a href="add_subtitles.php">Add a new subtitle</a></td>
 	</tr>
-	<tr>
+	<!-- <tr>
 		<td>Timeslot</td>
 		<td><a href="add_timeslot.php">Delete timeslot</a></td>
 		<td><a href="update_timeslot.php">Modify existing timeslot</a></td>
 		<td><a href="create_timeslot.php">Create New</a></td>
-	</tr>
+	</tr> -->
 	<tr>
 		<td>TVContract</td>
 		<td><a href="delete_tvcontact.php">Delete TVContract</a></td>
