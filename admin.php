@@ -1,3 +1,9 @@
+<head>
+	<style type="text/css">
+		td {padding:10px;}
+	</style>
+</head>
+
 <h2>Main administrative page for cyan</h2>
 
 <table>
