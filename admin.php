@@ -69,7 +69,7 @@ tvshow
 		<td>Timeslot</td>
 		<td><a href="add_timeslot.php">Delete timeslot</a></td>
 		<td><a href="update_timeslot.php">Modify existing timeslot</a></td>
-		<td><a href="create_timeslot.php">Create New</a></td>
+		<td><a href="add.php?table=timeslot">Create New</a></td>
 	</tr>
 	<tr>
 		<td>TVContract</td>
