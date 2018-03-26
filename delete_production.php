@@ -1,34 +1,51 @@
 <?php
+error_reporting(E_ALL);
 include("dbconnect.php");
 
-$method = $_GET["method"];
-$prodName = $_GET["prod_name"];
-$prodCompanies = $_GET["prod_companies"];
-$error = $_GET["error"];
-$success = $_GET["success"];
+
+$prodId = null;
+if (isset($_GET["prodId"])) {
+	$prodId = $_GET["prodId"];
+}
+
+$error = null;
+if (isset($_GET["error"])) {
+	$error = $_GET["error"];
+}
+
+
+$success = null;
+if (isset($_GET["success"])) {
+	$success = $_GET["success"];
+}
+
+
 ?>
 
 <form action="delete_production.php" method="GET">
-<h3>Delete a production company. Select a company to delete and press submit.</h3>
-<select name="prod_companies"><?php printQueryToOptionList("select * from production"); ?></select>
+<h3>Delete the existing prodId. Select a prodId name you want to delete and press submit.</h3>
+<select name="prodId"><?php printMultiQueryToOptionList("select * from production"); ?></select>
 <input type="submit"></input>
 </form>
 
 
 <?php
-if (isset($prodCompanies)) {
-    if ($stmt = $connection->prepare("delete from production where prodId = " . $prodCompanies)) {
+if (isset($prodId)) {
+    if ($stmt = $connection->prepare("delete from production where prodId = " . $prodId)) {
         $stmt->execute();
+
         header("Location: delete_production.php?success");
     }
-} else if (empty($prodCompanies) && !isset($error) && !isset($success)) {
+} else if (empty($creditId) && !isset($error) && !isset($success)) {
 	header("Location: delete_production.php?error");
 }
 
 if (isset($success)) {
-	echo "Company has been deleted! Please refresh the page to see your changes.<br />";
+	echo "prodId has been deleted! Please refresh the page to see your changes.<br />";
 } else if (isset($error)) {
-	echo "The production name is empty. Please enter in a non-empty production name.<br />";
+	echo "The prodId type is empty. Please enter in a non-empty prodId name.<br />";
 }
+
+
 
 ?>

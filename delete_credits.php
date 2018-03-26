@@ -18,6 +18,8 @@ $success = null;
 if (isset($_GET["success"])) {
 	$success = $_GET["success"];
 }
+
+
 ?>
 
 <form action="delete_credits.php" method="GET">
