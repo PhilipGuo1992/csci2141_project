@@ -1,97 +1,76 @@
-<h2>Choose an item to add to the database</h2>
+<head>
+	<style type="text/css">
+		td {padding:10px;}
+	</style>
+</head>
 
+<h2>Main administrative page for cyan</h2>
 
-<!-- 
-
-credit
-episode
-genre
-movie
-moviecontract
-movieregion
-production
-profession
-region
-subtitle
-timeslot
-tvcontract
-tvregion
-tvshow
-
--->
 <table>
-	<tr>
-		<td><a href="add_subtitle.php">Subtitle</a></td>
-	</tr>
 		<tr>
 		<td>Credit</td>
-		<td><a href="delete_credits.php">Delete credit(s)</a></td>
-		<td><a href="update_credits.php">Modify existing credits</a></td>
-		<td><a href="add_credits.php">Create New</a></td>
+		<td><a href="delete_credits.php">Delete</a></td>
+		<td><a href="update_credits.php">Modify</a></td>
+		<td><a href="http://138.197.129.252/add.php?table=subtitle">Create New</a></td>
 	</tr>
 		<tr>
 		<td>Episode</td>
-		<td><a href="delete_episode.php">Delete an episode</a></td>
-		<td><a href="modify_episode.php">Modify existing episode</a></td>
-		<td><a href="create_episode.php">Create New</a></td>
+		<td><a href="delete_episode.php">Delete</a></td>
+		<td><a href="update_episode.php">Modify</a></td>
+		<td><a href="http://138.197.129.252/add.php?table=episode">Create New</a></td>
 	</tr>
 	<tr>
 		<td>Genre</td>
-		<td><a href="delete_genre.php">Delete a Genre</a></td>
-		<td><a href="update_genre.php">Modify an existing Genre</a></td>
-		<td><a href="add_genre.php">Add a new Genre</a></td>
+		<td><a href="delete_genre.php">Delete</a></td>
+		<td><a href="update_genre.php">Modify</a></td>
+		<td><a href="http://138.197.129.252/add.php?table=genre">Create New</a></td>
 	</tr>
 	<tr>
 		<td>Movie</td>
-		<td><a href="delete_movie.php">Delete a Movie</a></td>
-		<td><a href="update_movie.php">Modify an existing Movie</a></td>
-		<td><a href="add_movie.php">Add a new Movie</a></td>
+		<td><a href="delete_movie.php">Delete</a></td>
+		<td><a href="update_movie.php">Modify</a></td>
+		<td><a href="http://138.197.129.252/add.php?table=movie">Create New</a></td>
 	</tr>
 	<tr>
 		<td>Production Company</td>
-		<td><a href="delete_production.php">Delete a production company</a></td>
-		<td><a href="modify_production.php">Modify existing production company</a></td>
-		<td><a href="add_production.php">Create new</a></td>
+		<td><a href="delete_production.php">Delete</a></td>
+		<td><a href="modify_production.php">Modify</a></td>
+		<td><a href="http://138.197.129.252/add.php?table=production">Create New</a></td>
 	</tr>
 	<tr>
 		<td>Region</td>
-		<td><a href="delete_region.php">Delete region</a></td>
-		<td><a href="update_region.php">Update existing</a></td>
-		<td><a href="create_region.php">Create New</a></td>
+		<td><a href="delete_region.php">Delete</a></td>
+		<td><a href="update_region.php">Modify</a></td>
+		<td><a href="http://138.197.129.252/add.php?table=region">Create New</a></td>
+	</tr>
+	<tr>
+		<td>Timeslot</td>
+		<td><a href="delete_timeslot.php">Delete</a></td>
+		<td><a href="update_timeslot.php">Modify</a></td>
+		<td><a href="http://138.197.129.252/add.php?table=timeslot">Create new</a></td>
 	</tr>
 	<tr>
 		<td>Subtitle</td>
-		<td><a href="delete_subtitle.php">Delete subtitle</a></td>
-		<td><a href="update_region.php">Update an existing region</a></td>
-		<td><a href="add_subtitles.php">Add a new subtitle</a></td>
+		<td><a href="delete_subtitle.php">Delete</a></td>
+		<td><a href="update_subtitle.php">Modify</a></td>
+		<td><a href="http://138.197.129.252/add.php?table=subtitle">Create New</a></td>
 	</tr>
-	<!-- <tr>
-		<td>Timeslot</td>
-		<td><a href="add_timeslot.php">Delete timeslot</a></td>
-		<td><a href="update_timeslot.php">Modify existing timeslot</a></td>
-<<<<<<< HEAD
-		<td><a href="add.php?table=timeslot">Create New</a></td>
-	</tr>
-=======
-		<td><a href="create_timeslot.php">Create New</a></td>
-	</tr> -->
->>>>>>> c6e4191cb3ca12e2372112745e9e221eab8a942f
 	<tr>
 		<td>TVContract</td>
-		<td><a href="delete_tvcontact.php">Delete TVContract</a></td>
-		<td><a href="update_tvcontact.php">Update existing</a></td>
-		<td><a href="create_tvcontact.php">Create New</a></td>
+		<td><a href="delete_tvcontract.php">Delete</a></td>
+		<td><a href="update_tvcontract.php">Modify</a></td>
+		<td><a href="http://138.197.129.252/add.php?table=tvcontract">Create New</a></td>
 	</tr>
 	<tr>
 		<td>TVRegion</td>
-		<td><a href="delete_tvregion.php">Delete TVRegion</a></td>
-		<td><a href="update_tvregion.php">Update existing</a></td>
-		<td><a href="create_tvregion.php">Create New</a></td>
+		<td><a href="delete_tvregion.php">Delete</a></td>
+		<td><a href="update_tvregion.php">Modify</a></td>
+		<td><a href="http://138.197.129.252/add.php?table=tvregion">Create New</a></td>
 	</tr>
 	<tr>
 		<td>TVShow</td>
-		<td><a href="delete_tvshow.php">Delete tvshow</a></td>
-		<td><a href="update_tvshow.php">Update existing</a></td>
-		<td><a href="create_tvshow.php">Create New</a></td>
+		<td><a href="delete_tvshow.php">Delete</a></td>
+		<td><a href="update_tvshow.php">Update</a></td>
+		<td><a href="http://138.197.129.252/add.php?table=tvshow">Create New</a></td>
 	</tr>
 </table>
