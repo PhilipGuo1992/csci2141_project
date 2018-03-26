@@ -9,7 +9,8 @@ $oldRegion = $_GET["oldRegion"];
 <form action="update_region.php" method="GET">
 <h3>Modify the Region</h3>
 
-<select name="oldRegion"><?php printQueryToOptionList("select * from region"); ?></select>
+<select name="oldRegion"><?php printMultiQueryToOptionList("select regionId, regionName from region"); ?></select>
+
 <input id="newRegion" placeholder="Change the name to..." name="newRegion"></input>
 <input type="submit"></input>
 </form>
