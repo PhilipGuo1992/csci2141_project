@@ -18,19 +18,16 @@ $oldName = $_GET["oldName"];
 
 <?php
 if (isset($newName) && isset($oldName)) {
-    if ($stmt = $connection->prepare("update credit set movieName = '" . $newName . "' and releaseYear = '.$newYear.' where movieId = " . $movieId)) {
+    if ($stmt = $connection->prepare("update credit set movieName = '" . $newName . "' where movieId = " . $movieId)) {
+        $stmt->execute();
+        echo "Movie has been updated! Please refresh the page to see your changes.<br />";
+    }
+	if ($stmt = $connection->prepare("update credit set releaseYear = '".$newYear."' where movieId = " . $movieId)) {
         $stmt->execute();
         echo "Movie has been updated! Please refresh the page to see your changes.<br />";
     }
 } 
 
-
-else if (isset($newYear)) {
-	if ($stmt = $connection->prepare("update credit set releaseYear = '".$newYear."' where movieId = " . $movieId)) {
-        $stmt->execute();
-        echo "Movie has been updated! Please refresh the page to see your changes.<br />";
-    }
-}
 	else if (empty($newCredit)) {
 	echo "The Genre name is empty. Please enter in a non-empty name.<br />";
 }
