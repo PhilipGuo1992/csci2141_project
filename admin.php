@@ -62,7 +62,7 @@ tvshow
 	<tr>
 		<td>Subtitle</td>
 		<td><a href="delete_subtitle.php">Delete subtitle</a></td>
-		<td><a href="update_subtitle.php">Update subtitle</a></td>
+		<td><a href="update_region.php">Update an existing region</a></td>
 		<td><a href="add_subtitles.php">Add a new subtitle</a></td>
 	</tr>
 	<tr>
