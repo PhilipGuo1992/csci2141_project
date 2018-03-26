@@ -1,18 +1,30 @@
 <?php
+error_reporting(E_ALL);
 include("dbconnect.php");
 
-$method = $_GET["method"];
+
+$genreId = null;
+if (isset($_GET["genreId"])) {
+	$genreId = $_GET["genreId"];
+}
+
+$error = null;
+if (isset($_GET["error"])) {
+	$error = $_GET["error"];
+}
 
 
-$genreId = $_GET["genre_type"];
+$success = null;
+if (isset($_GET["success"])) {
+	$success = $_GET["success"];
+}
 
-$error = $_GET["error"];
-$success = $_GET["success"];
+
 ?>
 
 <form action="delete_genre.php" method="GET">
-<h3>Delete the existing Genre. Select a Genre type to delete and press submit.</h3>
-<select name="genre_type"><?php printQueryToOptionList("select * from genre"); ?></select>
+<h3>Delete the existing genre. Select a genre name you want to delete and press submit.</h3>
+<select name="genreId"><?php printMultiQueryToOptionList("select * from genre"); ?></select>
 <input type="submit"></input>
 </form>
 
@@ -24,14 +36,14 @@ if (isset($genreId)) {
 
         header("Location: delete_genre.php?success");
     }
-} else if (empty($genreId) && !isset($error) && !isset($success)) {
+} else if (empty($creditId) && !isset($error) && !isset($success)) {
 	header("Location: delete_genre.php?error");
 }
 
 if (isset($success)) {
-	echo "Genre has been deleted! Please refresh the page to see your changes.<br />";
+	echo "genreId has been deleted! Please refresh the page to see your changes.<br />";
 } else if (isset($error)) {
-	echo "The Genre type is empty. Please enter in a non-empty production name.<br />";
+	echo "The genreId type is empty. Please enter in a non-empty genreId name.<br />";
 }
 
 

@@ -1,18 +1,30 @@
 <?php
+error_reporting(E_ALL);
 include("dbconnect.php");
 
-$method = $_GET["method"];
+
+$subtitleId = null;
+if (isset($_GET["subtitleId"])) {
+	$subtitleId = $_GET["subtitleId"];
+}
+
+$error = null;
+if (isset($_GET["error"])) {
+	$error = $_GET["error"];
+}
 
 
-$subtitleId = $_GET["subtitle_type"];
+$success = null;
+if (isset($_GET["success"])) {
+	$success = $_GET["success"];
+}
 
-$error = $_GET["error"];
-$success = $_GET["success"];
+
 ?>
 
 <form action="delete_subtitle.php" method="GET">
-<h3>Delete the existing subtitle. Select a subtitle type to delete and press submit.</h3>
-<select name="subtitle_type"><?php printQueryToOptionList("select * from subtitle"); ?></select>
+<h3>Delete the existing subtitleId. Select a subtitleId name you want to delete and press submit.</h3>
+<select name="subtitleId"><?php printMultiQueryToOptionList("select * from subtitle"); ?></select>
 <input type="submit"></input>
 </form>
 
@@ -29,9 +41,9 @@ if (isset($subtitleId)) {
 }
 
 if (isset($success)) {
-	echo "Subtitle has been deleted! Please refresh the page to see your changes.<br />";
+	echo "subtitleId has been deleted! Please refresh the page to see your changes.<br />";
 } else if (isset($error)) {
-	echo "The subtitle type is empty. Please enter in a non-empty production name.<br />";
+	echo "The subtitleId type is empty. Please enter in a non-empty subtitleId name.<br />";
 }
 
 

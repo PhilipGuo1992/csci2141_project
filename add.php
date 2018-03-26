@@ -1,5 +1,5 @@
 <?php
-include("dbconnect.php");
+include("dbconnect_local.php");
 
 $table = $_GET["table"];
 $method = "add";
