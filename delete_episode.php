@@ -1,6 +1,6 @@
 <?php
 error_reporting(E_ALL);
-include("dbconnect_local.php");
+include("dbconnect.php");
 
 
 $episodeId = null;
