@@ -15,7 +15,6 @@ $oldRegion = $_GET["oldRegion"];
 <input type="submit"></input>
 </form>
 
-
 <?php
 if (isset($newRegion) && isset($oldRegion)) {
     if ($stmt = $connection->prepare("update region set regionName = '" . $newRegion . "' where regionId = " . $oldRegion)) {
