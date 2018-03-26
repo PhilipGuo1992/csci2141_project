@@ -2,27 +2,38 @@
 include("dbconnect.php");
 
 $method = $_GET["method"];
+
+
+$creditId = $_GET["fullName"];
+
+$error = $_GET["error"];
+$success = $_GET["success"];
 ?>
 
 <form action="delete_credits.php" method="GET">
-<h3>Delete Credit</h3>
-<input id="Full_Name" placeholder="Full Name." name="Full_Name"></input>
+<h3>Delete the existing Credit. Select a Credit Name you want to delete and press submit.</h3>
+<select name="genre_type"><?php printQueryToOptionList("select * from credit"); ?></select>
 <input type="submit"></input>
 </form>
 
 
 <?php
-if (isset($_GET["Full_Name"])) {
-    if ($stmt = $connection->prepare("DELETE FROM credit WHERE fullName =$_GET['Full_Name']")) {
+if (isset($genreId)) {
+    if ($stmt = $connection->prepare("delete from credit where creditId = " . $crediId)) {
         $stmt->execute();
-        echo "The Credit has been deleted<br />";
+
+        header("Location: delete_genre.php?success");
     }
-} else if (empty($_GET['Full_Name'])) {
-	echo "The Full Name is empty. Please enter in a non-empty name.<br />";
+} else if (empty($genreId) && !isset($error) && !isset($success)) {
+	header("Location: delete_credits.php?error");
 }
 
+if (isset($success)) {
+	echo "Credit has been deleted! Please refresh the page to see your changes.<br />";
+} else if (isset($error)) {
+	echo "The Credit type is empty. Please enter in a non-empty production name.<br />";
+}
+
+
+
 ?>
-
-
-
-
