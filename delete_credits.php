@@ -13,7 +13,7 @@ $method = $_GET["method"];
 
 <?php
 if (isset($_GET["Full_Name"])) {
-    if ($stmt = $connection->prepare("DELETE FROM credit WHERE fullName =$_GET['Full_Name'] {
+    if ($stmt = $connection->prepare("DELETE FROM credit WHERE fullName =$_GET['Full_Name']")) {
         $stmt->execute();
         echo "The Credit has been deleted<br />";
     }
@@ -22,5 +22,7 @@ if (isset($_GET["Full_Name"])) {
 }
 
 ?>
+
+
 
 
