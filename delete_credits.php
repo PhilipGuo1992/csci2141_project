@@ -1,10 +1,11 @@
 <?php
+error_reporting(E_ALL);
 include("dbconnect.php");
 
 $method = $_GET["method"];
 
 
-$creditId = $_GET["fullName"];
+$creditId = $_GET["creditId"];
 
 $error = $_GET["error"];
 $success = $_GET["success"];
@@ -12,19 +13,19 @@ $success = $_GET["success"];
 
 <form action="delete_credits.php" method="GET">
 <h3>Delete the existing Credit. Select a Credit Name you want to delete and press submit.</h3>
-<select name="genre_type"><?php printQueryToOptionList("select * from credit"); ?></select>
+<select name="creditId"><?php printQueryToOptionList("select creditId,fullName from credit"); ?></select>
 <input type="submit"></input>
 </form>
 
 
 <?php
-if (isset($genreId)) {
-    if ($stmt = $connection->prepare("delete from credit where creditId = " . $crediId)) {
+if (isset($creditId)) {
+    if ($stmt = $connection->prepare("delete from credit where creditId = " . $creditId)) {
         $stmt->execute();
 
-        header("Location: delete_genre.php?success");
+        header("Location: delete_credits.php?success");
     }
-} else if (empty($genreId) && !isset($error) && !isset($success)) {
+} else if (empty($creditId) && !isset($error) && !isset($success)) {
 	header("Location: delete_credits.php?error");
 }
 
