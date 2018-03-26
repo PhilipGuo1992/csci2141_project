@@ -3,7 +3,7 @@ include("dbconnect_local.php");
 
 $method = $_GET["method"];
 $newName = $_GET["newName"];
-$newYear = $_GET["newYear"]
+$newYear = $_GET["newYear"];
 $oldName = $_GET["oldName"];
 ?>
 
