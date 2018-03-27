@@ -1,5 +1,5 @@
 <?php
-include("dbconnect_local.php");
+include("dbconnect.php");
 
 $method = $_GET["method"];
 $newCredit = $_GET["newCredit"];
@@ -8,8 +8,8 @@ $oldCredit = $_GET["oldCredit"];
 
 <form action="update_tvcontract.php" method="GET">
 <h3>Modify the TvContract</h3>
-<select name="oldCredit"><?php printQueryToOptionList("select showId,showName from tvcontract join tvshow"); ?></select>
-<select name="newCredit"><?php printQueryToOptionList("select creditId,fullName from tvcontract join credit"); ?></select>
+<select name="oldCredit"><?php printMultiQueryToOptionList("select showId,showName from tvcontract join tvshow"); ?></select>
+<select name="newCredit"><?php printMultiQueryToOptionList("select creditId,fullName from tvcontract join credit"); ?></select>
 <input type="submit"></input>
 </form>
 
