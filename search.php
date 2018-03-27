@@ -20,7 +20,7 @@ Find all shows playing <select name="boolOp"><!--<option value="on this date">on
 </form>
 
 <button type="button" id="admin-button" onclick="javascript:document.location='http://138.197.129.252/admin.php'">Toggle Admin interface</button>
-</div>
+</div> 
 <div class="column right">
 <?php
 
