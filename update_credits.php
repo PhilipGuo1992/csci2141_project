@@ -18,7 +18,10 @@ $oldCredit = $_GET["oldCredit"];
 if (isset($newCredit) && isset($oldCredit)) {
     if ($stmt = $connection->prepare("update credit set fullName = '" . $newCredit . "' where creditId = " . $oldCredit)) {
         $stmt->execute();
-        echo "Credit Name has been updated! Please refresh the page to see your changes.<br />";
+		?>
+		<form action="admin.php">
+        <?php 
+		echo "Credit Name has been updated! Please refresh the page to see your changes.<br />";
     }
 } else if (empty($newCredit)) {
 	echo "The Credit name is empty. Please enter in a non-empty name.<br />";
