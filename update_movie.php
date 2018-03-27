@@ -18,6 +18,12 @@ $movieId = $_GET["movieId"];
 
 <?php
 if (true) {
+	echo($newName);
+	echo($movieId);
+	echo($newYear);
+	$nav = "update credit set movieName = '" . $newName . "' where movieId = " . $movieId;
+	echo($nav);
+	exit();
     if ($stmt = $connection->prepare("update credit set movieName = '" . $newName . "' where movieId = " . $movieId)) {
         $stmt->execute();
         echo "Movie has been updated! Please refresh the page to see your changes.<br />";
