@@ -8,7 +8,7 @@ $prodCompanies = $_GET["prod_companies"];
 
 <form action="modify_production.php" method="GET">
 <h3>Modify a production company</h3>
-<select name="prod_companies"><?php printQueryToOptionList("select * from production"); ?></select>
+<select name="prod_companies"><?php printQueryToOptionList("select prodId,prodName from production"); ?></select>
 <input id="prod_name" placeholder="Change the name to..." name="prod_name"></input>
 <input type="submit"></input>
 </form>
