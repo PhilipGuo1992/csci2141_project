@@ -8,8 +8,8 @@ $oldCredit = $_GET["oldCredit"];
 
 <form action="update_tvcontract.php" method="GET">
 <h3>Modify the TvContract</h3>
-<select name="oldCredit"><?php printQueryToOptionList("select showId from tvcontract join tvshow"); ?></select>
-<select name="newCredit"><?php printQueryToOptionList("select creditId from tvcontract join credit"); ?></select>
+<select name="oldCredit"><?php printQueryToOptionList("select showId,showName from tvcontract join tvshow"); ?></select>
+<select name="newCredit"><?php printQueryToOptionList("select creditId,fullName from tvcontract join credit"); ?></select>
 <input type="submit"></input>
 </form>
 
