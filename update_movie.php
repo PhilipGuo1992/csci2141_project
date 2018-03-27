@@ -16,7 +16,7 @@ $oldCredit = $_GET["oldCredit"];
 
 <?php
 if (isset($newCredit) && isset($oldCredit)) { 
-    if ($stmt = $connection->prepare("update movie set movieName = '" . $newCredit . "' where creditId = " . $oldCredit)) {
+    if ($stmt = $connection->prepare("update movie set movieName = '" . $newCredit . "' where movieIdId = " . $oldCredit)) {
         $stmt->execute();
         echo "Movie Name has been updated! Please refresh the page to see your changes.<br />";
     }
