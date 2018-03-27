@@ -18,7 +18,7 @@ $prodCompanies = $_GET["prod_companies"];
 if (isset($prodName) && isset($prodCompanies)) {
     if ($stmt = $connection->prepare("update production set prodName = '" . $prodName . "' where prodId = " . $prodCompanies)) {
         $stmt->execute();
-        echo "Company has been updated! Please refresh the page to see your changes.<br />";
+        echo "Production Name has been updated! Please refresh the page to see your changes.<br />";
     }
 } else if (empty($prodName)) {
 	echo "The production name is empty. Please enter in a non-empty production name.<br />";
