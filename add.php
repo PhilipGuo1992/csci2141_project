@@ -1,8 +1,9 @@
 <?php
-include("dbconnect_local.php");
+include("dbconnect.php");
 
 $table = $_GET["table"];
 $method = "add";
+$dateFields = array();
 ?>
 <head>
 	<style>
@@ -14,7 +15,8 @@ $method = "add";
 </style>
 </head>
 <h3><?php echo $method; ?> <?php echo $table; ?></h3>
-<form action="<?php echo $method; ?>_<?php echo $table; ?>.php" method="GET">
+
+<form action="add.php?table=<?php echo $table; ?>" method="GET" onSubmit="return save_data_function()">
 <?php
     $connection = db_connect();
     $query = "describe " . $table;
@@ -38,12 +40,21 @@ $method = "add";
     		// it's not a primary key or a foreign key; user must enter in data for it
     		// generate inputs
     		// first, get the max length of the key
-    		$maxLengthOfInput = (int)(explode(")", explode("(", $row[1])[1])[0]);
+    		$maxLengthOfInput = 30;
+    		try {
+    			//$maxLengthOfInput = (int)(explode(")", explode("(", $row[1])[1])[0]);
+    		} catch (Exception $e) {
+    			// suppressed
+    		}
 
     		// https://stackoverflow.com/questions/4366730
     		$inputType = "text";
     		if (strpos($row[1], 'int(') !== false) {
     			$inputType = "number";
+    		}
+
+    		if (strpos($row[1], 'datetime') !== false) {
+    			$inputType = "date";
     		}
 
     		// check if the value is allowed to be nullable.
@@ -64,10 +75,27 @@ $method = "add";
 
     		// check if it's a boolean value or a text
     		if ($row[1] != "tinyint(4)") {
+
+    			if ($row[1] != "datetime") {
 	?>
 	<p><label for="<?php echo $row[0]; ?>"><?php echo $row[0]; ?></label> <input type="<?php echo $inputType; ?>" id="<?php echo $row[0]; ?>" placeholder="<?php echo $placeholder ?>" name="<?php echo $row[0]; ?>" maxlength="<?php echo $maxLengthOfInput; ?>" max="<?php echo $maxLengthOfInput*1000; ?>" <?php if (!$isNullable) {echo " required"; } ?>></input></p>
 
 <?php } else {
+	// it's a datetime
+
+	// print out two fields; one for date, the other for time.
+?>
+	<p><label for="<?php echo $row[0]; ?>"><?php echo $row[0]; ?></label> <input onchange="save_data_function()" type="date" id="<?php echo $row[0] . 'd'; ?>" placeholder="<?php echo $placeholder ?>" maxlength="<?php echo $maxLengthOfInput; ?>" max="<?php echo $maxLengthOfInput*1000; ?>" <?php if (!$isNullable) {echo " required"; } ?>></input></p>
+
+	<p><label for="<?php echo $row[0]; ?>"><?php echo $row[0]; ?></label> <input onchange="save_data_function()" type="time" id="<?php echo $row[0] . 't'; ?>" placeholder="<?php echo $placeholder ?>" maxlength="<?php echo $maxLengthOfInput; ?>" max="<?php echo $maxLengthOfInput*1000; ?>" <?php if (!$isNullable) {echo " required"; } ?>></input></p>
+	<!-- put input here to combine both date and time attrs -->
+	<input type="hidden" type="text" value="" name="<?php echo $row[0]; ?>"></input>
+
+<?php
+
+// add datefield to javascript to handle it specially
+array_push($dateFields, $row[0]);
+}} else {
 // it's a boolean value; set up form appropriately
 // https://www.w3schools.com/html/html_form_input_types.asp
 ?><p><label for="<?php echo $row[0]; ?>"><?php echo $row[0]; ?></label>
@@ -95,7 +123,7 @@ $method = "add";
 	?>
 	<p><label for="<?php echo $row[0]; ?>"><?php echo $row[0]; ?></label>
 		<select name="<?php echo $REFERENCED_COLUMN_NAME; ?>" id="<?php echo $REFERENCED_COLUMN_NAME; ?>">
-	<?php printQueryToOptionList($query); ?>
+	<?php printMultiQueryToOptionList($query); ?>
 	</select></p>
 
 	<?php
@@ -129,11 +157,26 @@ if (isset($_GET["FORM_SUBMIT"])) {
 	echo $query;
     if ($stmt = $connection->prepare($query)) {
         $stmt->execute();
-        sleep(2);
-        echo "<script>window.location.href = '" . $method . "_" . $table . ".php?success';</script>";
     }
 } else if (empty($_GET["FORM_SUBMIT"])) {
 	echo "Submit the form to " . $method . " the item to the database.";
 }
 
 ?>
+
+
+<!-- https://stackoverflow.com/questions/6223103/how-do-i-intercept-a-forms-values-before-sending-it -->
+
+<script>
+	function save_data_function() {
+	<?php
+		// print weird date array in javascript form
+		echo "dateArrayFields = " . json_encode($dateFields) . ";";
+
+	?>
+
+	for (i = 0; i < dateArrayFields.length; i++) { 
+		document.getElementById(dateArrayFields[i]).value = document.getElementById(dateArrayFields[i] + "d").value + " " + document.getElementById(dateArrayFields[i] + "t").value;
+	}
+	}
+</script>

@@ -1,6 +1,9 @@
 <head>
 	<style type="text/css">
 		td {padding:10px;}
+		body {background-color:#17181c;color:#fff;}
+		a:visited {color:white;}
+		a:unvisited {color:grey;}
 	</style>
 </head>
 
@@ -11,7 +14,7 @@
 		<td>Credit</td>
 		<td><a href="delete_credits.php">Delete</a></td>
 		<td><a href="update_credits.php">Modify</a></td>
-		<td><a href="http://138.197.129.252/add.php?table=subtitle">Create New</a></td>
+		<td><a href="http://138.197.129.252/add.php?table=credit">Create New</a></td>
 	</tr>
 		<tr>
 		<td>Episode</td>
@@ -57,7 +60,7 @@
 	</tr>
 	<tr>
 		<td>TVContract</td>
-		<td><a href="delete_tvcontract.php">Delete</a></td>
+		<td><a href="delete_tvcontract.php"></a></td>
 		<td><a href="update_tvcontract.php">Modify</a></td>
 		<td><a href="http://138.197.129.252/add.php?table=tvcontract">Create New</a></td>
 	</tr>

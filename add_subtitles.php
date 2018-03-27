@@ -4,7 +4,7 @@ include("dbconnect.php");
 $method = $_GET["method"];
 ?>
 
-<form action="add_subtitle.php" method="GET">
+<form action="add_subtitles.php" method="GET">
 <h3>Add new subtitle</h3>
 <input id="subtitle_type" placeholder="New subtitle type." name="subtitle_type"></input>
 <input type="submit"></input>
