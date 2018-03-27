@@ -10,7 +10,7 @@
 <body>
 
 <h1 style='font-family:Helvetica'>Search for a timeslot</h1>
-<a href="search.php?boolOp=allShows" style="float:right;color:#fff;padding-left:20px">All Shows</a> <a href="search.php?boolOp=allMovies" style="float:right;color:#fff;padding-left:20px">Movies</a>
+<a href="search.php?boolOp=allShows" style="float:right;color:#fff;padding-left:20px">All Shows</a> <a href="search.php?boolOp=allMovies" style="float:right;color:#fff;padding-left:20px">Movies</a> <a href="search.php?boolOp=bestRatedEpisodes" style="float:right;color:#fff;padding-left:20px">Best Rated Episodes</a> <a href="search.php?boolOp=allEpisodes" style="float:right;color:#fff;padding-left:20px">Episodes</a>
 <div class="row">
   <div class="column left">
 
@@ -38,6 +38,14 @@ $query = "select DATE_FORMAT(timeslot_start, \"%H:%i\"), CONCAT(showName, ' -- '
 
 if ($boolOp == "allMovies") {
 	$query = "select DATE_FORMAT(timeslot_start, \"%H:%i\"), movieName, timeslot_id from movie join timeslot using(movieId)";
+}
+
+if ($boolOp == "bestRatedEpisodes") {
+  $query = "select * from best_rated_episodes";
+}
+
+if ($boolOp == "allEpisodes") {
+  $query = "select * from episodeView";
 }
 ?>
 <table id="results">
