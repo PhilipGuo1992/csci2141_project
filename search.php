@@ -66,4 +66,4 @@ if ($boolOp == "allMovies") {
   </div>
 </div>
 
-<?php echo "<code style='background-color:#000'>QUERY: " . $query . "</code>"; ?>
+<?php echo "<code style='background-color:#000'></code>"; ?>
