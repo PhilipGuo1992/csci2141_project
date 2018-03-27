@@ -76,4 +76,10 @@
 		<td><a href="update_tvshow.php">Update</a></td>
 		<td><a href="http://138.197.129.252/add.php?table=tvshow">Create New</a></td>
 	</tr>
+	<tr>
+		<td>Profession</td>
+		<td><a href="delete_profession.php">Delete</a></td>
+		<td><a href="update_profession.php">Update</a></td>
+		<td><a href="http://138.197.129.252/add.php?table=profession">Create New</a></td>
+	</tr>
 </table>
