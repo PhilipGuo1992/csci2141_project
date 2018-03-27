@@ -8,7 +8,7 @@ $oldCredit = $_GET["oldCredit"];
 
 <form action="update_movie.php" method="GET">
 <h3>Modify the Credit Name</h3>
-<select name="oldCredit"><?php printQueryToOptionList("select movieId,movieName from credit"); ?></select>
+<select name="oldCredit"><?php printQueryToOptionList("select movieId,movieName from movie"); ?></select>
 <input id="newCredit" placeholder="Change the name to..." name="newCredit"></input>
 <input type="submit"></input>
 </form>
