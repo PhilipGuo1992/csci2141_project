@@ -8,7 +8,7 @@ $movieId = $_GET["movieId"];
 ?>
 
 <form action="update_movie.php" method="GET">
-<h3>Modify the Credit Name</h3>
+<h3>Update Movie</h3>
 <select name="movieId"><?php printQueryToOptionList("select movieId,concat(movieName,releaseYear) from movie"); ?></select>
 <input id="newName" placeholder="Change the name to..." name="newName"></input>
 <input id="newYear" placeholder="Change Year to" name="newYear"></input>
@@ -17,7 +17,13 @@ $movieId = $_GET["movieId"];
 
 
 <?php
-if (true) {
+
+	echo($newName);
+	echo($movieId);
+	echo($newYear);
+	$nav = "update credit set movieName = '" . $newName . "' where movieId = " . $movieId;
+	echo($nav);
+	exit();
     if ($stmt = $connection->prepare("update credit set movieName = '" . $newName . "' where movieId = " . $movieId)) {
         $stmt->execute();
         echo "Movie has been updated! Please refresh the page to see your changes.<br />";
@@ -26,10 +32,4 @@ if (true) {
         $stmt->execute();
         echo "Movie has been updated! Please refresh the page to see your changes.<br />";
     }
-} 
-
-	else if (empty($newCredit)) {
-	echo "The Movie name is empty. Please enter in a non-empty name.<br />";
-}
-
 ?>
