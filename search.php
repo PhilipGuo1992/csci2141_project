@@ -19,7 +19,7 @@ Find all shows playing <select name="boolOp"><!--<option value="on this date">on
 <button type="submit" value="Submit">Submit</button>
 </form>
 
-<button type="button" id="admin-button" onclick="javascript:document.location='http://138.197.129.252/add.php'">Toggle admin interface</button>
+<button type="button" id="admin-button" onclick="javascript:document.location='http://138.197.129.252/admin.php'">Toggle admin interface</button>
 </div>
 <div class="column right">
 <?php
