@@ -11,7 +11,7 @@
 		<td>Credit</td>
 		<td><a href="delete_credits.php">Delete</a></td>
 		<td><a href="update_credits.php">Modify</a></td>
-		<td><a href="http://138.197.129.252/add.php?table=subtitle">Create New</a></td>
+		<td><a href="http://138.197.129.252/add.php?table=credit">Create New</a></td>
 	</tr>
 		<tr>
 		<td>Episode</td>
