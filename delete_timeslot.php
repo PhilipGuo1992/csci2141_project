@@ -26,6 +26,7 @@ if (isset($_GET["success"])) {
 <h3>Delete the existing timeslotId. Select a timeslotId name you want to delete and press submit.</h3>
 <select name="timeslotId"><?php printMultiQueryToOptionList("select timeslot_id, CONCAT(timeslot_start, ' to ', timeslot_end) from timeslot"); ?></select>
 <input type="submit"></input>
+<h5><a href="admin.php">Go To HomePage</a></h5>
 </form>
 
 

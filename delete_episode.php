@@ -26,6 +26,7 @@ if (isset($_GET["success"])) {
 <h3>Delete the existing episode. Select a episodeId name you want to delete and press submit.</h3>
 <select name="episodeId"><?php printMultiQueryToOptionList("select episodeId, CONCAT(showName, '(S', seasonNumber, ' E', episodeNumber, ')') from episode JOIN tvshow"); ?></select>
 <input type="submit"></input>
+<h5><a href="admin.php">Go To HomePage</a></h5>
 </form>
 
 

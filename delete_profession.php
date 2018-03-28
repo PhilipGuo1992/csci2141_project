@@ -26,6 +26,7 @@ if (isset($_GET["success"])) {
 <h3>Delete the existing profession. Select a profession name you want to delete and press submit.</h3>
 <select name="professionId"><?php printMultiQueryToOptionList("select professionId, profession from profession"); ?></select>
 <input type="submit"></input>
+<h5><a href="admin.php">Go To HomePage</a></h5>
 </form>
 
 

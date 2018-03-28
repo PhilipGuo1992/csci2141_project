@@ -26,6 +26,7 @@ if (isset($_GET["success"])) {
 <h3>Delete the existing Credit. Select a Credit Name you want to delete and press submit.</h3>
 <select name="creditId"><?php printMultiQueryToOptionList("select creditId,fullName from credit"); ?></select>
 <input type="submit"></input>
+<h5><a href="admin.php">Go To HomePage</a></h5>
 </form>
 
 

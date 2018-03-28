@@ -11,6 +11,7 @@ $oldCredit = $_GET["oldCredit"];
 <select name="oldCredit"><?php printMultiQueryToOptionList("select showId,showName from tvcontract join tvshow"); ?></select>
 <select name="newCredit"><?php printMultiQueryToOptionList("select creditId,fullName from tvcontract join credit"); ?></select>
 <input type="submit"></input>
+<h5><a href="admin.php">Go To HomePage</a></h5>
 </form>
 
 

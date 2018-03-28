@@ -11,6 +11,7 @@ $oldSubtitle = $_GET["oldSubtitle"];
 <select name="oldSubtitle"><?php printQueryToOptionList("select * from subtitle"); ?></select>
 <input id="newtitle" placeholder="Change the name to..." name="newtitle"></input>
 <input type="submit"></input>
+<h5><a href="admin.php">Go To HomePage</a></h5>
 </form>
 
 

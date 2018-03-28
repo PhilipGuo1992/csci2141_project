@@ -13,6 +13,7 @@ $showId = $_GET["showId"];
 <input id="newName" placeholder="Change the name to..." name="newName"></input>
 <input id="newYear" placeholder="Change Year to" name="newYear"></input>
 <input type="submit"></input>
+<h5><a href="admin.php">Go To HomePage</a></h5>
 </form>
 
 

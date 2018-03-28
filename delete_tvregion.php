@@ -26,6 +26,7 @@ if (isset($_GET["success"])) {
 <h3>Delete the existing regionHasShowId. Select a regionHasShowId name you want to delete and press submit.</h3>
 <select name="regionHasShowId"><?php printMultiQueryToOptionList("select regionHasShowId, CONCAT(regionName, ' -- ', showName) from tvregion natural join region natural join tvshow"); ?></select>
 <input type="submit"></input>
+<h5><a href="admin.php">Go To HomePage</a></h5>
 </form>
 
 

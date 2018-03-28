@@ -26,6 +26,7 @@ if (isset($_GET["success"])) {
 <h3>Delete the existing genre. Select a genre name you want to delete and press submit.</h3>
 <select name="genreId"><?php printMultiQueryToOptionList("select * from genre"); ?></select>
 <input type="submit"></input>
+<h5><a href="admin.php">Go To HomePage</a></h5>
 </form>
 
 

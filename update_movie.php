@@ -11,6 +11,7 @@ $oldCredit = $_GET["oldCredit"];
 <select name="oldCredit"><?php printQueryToOptionList("select movieId,movieName from movie"); ?></select>
 <input id="newCredit" placeholder="Change the name to..." name="newCredit"></input>
 <input type="submit"></input>
+<h5><a href="admin.php">Go To HomePage</a></h5>
 </form>
 
 

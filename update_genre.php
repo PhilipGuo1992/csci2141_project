@@ -12,6 +12,7 @@ $oldGenre = $_GET["oldGenre"];
 <select name="oldGenre"><?php printQueryToOptionList("select * from genre"); ?></select>
 <input id="newGenre" placeholder="Change the name to..." name="newGenre"></input>
 <input type="submit"></input>
+<h5><a href="admin.php">Go To HomePage</a></h5>
 </form>
 
 

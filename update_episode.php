@@ -11,6 +11,7 @@ $oldCredit = $_GET["oldCredit"];
 <select name="oldCredit"><?php printQueryToOptionList("select episodeId, CONCAT(showName, '(S', seasonNumber, ' E', episodeNumber, ')') from episode JOIN tvshow"); ?></select>
 <input id="newCredit" placeholder="Change the episodeNumber to..." name="newCredit"></input>
 <input type="submit"></input>
+<h5><a href="admin.php">Go To HomePage</a></h5>
 </form>
 
 

@@ -26,6 +26,7 @@ if (isset($_GET["success"])) {
 <h3>Delete the existing regionId. Select a regionId name you want to delete and press submit.</h3>
 <select name="regionId"><?php printMultiQueryToOptionList("select regionId, regionName from region"); ?></select>
 <input type="submit"></input>
+<h5><a href="admin.php">Go To HomePage</a></h5>
 </form>
 
 

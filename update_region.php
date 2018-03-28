@@ -13,6 +13,7 @@ $oldRegion = $_GET["oldRegion"];
 
 <input id="newRegion" placeholder="Change the name to..." name="newRegion"></input>
 <input type="submit"></input>
+<h5><a href="admin.php">Go To HomePage</a></h5>
 </form>
 
 <?php

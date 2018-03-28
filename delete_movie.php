@@ -26,6 +26,7 @@ if (isset($_GET["success"])) {
 <h3>Delete the existing movieId. Select a movieId name you want to delete and press submit.</h3>
 <select name="movieId"><?php printMultiQueryToOptionList("select movieId, movieName from movie"); ?></select>
 <input type="submit"></input>
+<h5><a href="admin.php">Go To HomePage</a></h5>
 </form>
 
 
