@@ -18,7 +18,7 @@ $showId = $_GET["showId"];
 
 
 <?php
-if (!is_null($newName) && isset($showId)) {
+if (!empty($newName) && isset($showId)) {
     if ($stmt = $connection->prepare("update movie set movieName = '" . $newName . "' where movieId = " . $showId)) {
         $stmt->execute();
 		 echo "Movie Name has been updated! Please refresh the page to see your changes.<br />";
