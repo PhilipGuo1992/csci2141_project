@@ -7,7 +7,7 @@ $newYear = $_GET["newYear"];
 $showId = $_GET["showId"];
 ?>
 
-<form action="update_tvshow.php" method="GET">
+<form action="update_movie.php" method="GET">
 <h3>Modify the Name</h3>
 <select name="showId"><?php printQueryToOptionList("select movieId,concat(movieName,releaseYear) from movie"); ?></select>
 <input id="newName" placeholder="Change the name to..." name="newName"></input>
