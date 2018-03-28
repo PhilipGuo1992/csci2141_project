@@ -18,13 +18,15 @@ $showId = $_GET["showId"];
 
 
 <?php
-if (true) {
+if (isset($newName) && isset($showId)) {
     if ($stmt = $connection->prepare("update movie set movieName = '" . $newName . "' where movieId = " . $showId)) {
         $stmt->execute();
+		 echo "Movie Name has been updated! Please refresh the page to see your changes.<br />";
     }
+if(isset($newYear) && isset($showId))
 	if ($stmt = $connection->prepare("update movie set releaseYear = '".$newYear."' where movieId = " . $showId)) {
         $stmt->execute();
-        echo "Movie has been updated! Please refresh the page to see your changes.<br />";
+        echo "Movie Release Year has been updated! Please refresh the page to see your changes.<br />";
     }
 } 
 
