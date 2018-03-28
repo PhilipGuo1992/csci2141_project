@@ -20,6 +20,7 @@ if (isset($newCredit) && isset($oldCredit)) {
     if ($stmt = $connection->prepare("update tvcontract set showId = '" . $newCredit . "' where tvcontract.creditId = " . $oldCredit)) {
         $stmt->execute();
         echo "The contract has been updated! Please refresh the page to see your changes.<br />";
+		header("Location:http://138.197.129.252/select.php?table=More_info");
     }
 } else if (empty($newCredit)) {
 	echo "The contract is empty. Please enter in a non-empty name.<br />";
