@@ -8,7 +8,7 @@ $oldSubtitle = $_GET["oldSubtitle"];
 
 <form action="update_subtitle.php" method="GET">
 <h3>Modify the subtitle type</h3>
-<select name="oldSubtitle"><?php printQueryToOptionList("select * from subtitle"); ?></select>
+<select name="oldSubtitle"><?php printQueryToOptionList("select subtitleId,subtitlesLang from subtitle"); ?></select>
 <input id="newtitle" placeholder="Change the name to..." name="newtitle"></input>
 <input type="submit"></input>
 <h5><a href="admin.php">Go To HomePage</a></h5>
