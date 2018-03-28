@@ -17,7 +17,7 @@ $oldSubtitle = $_GET["oldSubtitle"];
 
 <?php
 if (isset($newtitle) && isset($oldSubtitle)) {
-    if ($stmt = $connection->prepare("update subtitle set subtitleLang = '" . $newtitle . "' where subtitleId = " . $oldSubtitle)) {
+    if ($stmt = $connection->prepare("update subtitle set subtitlesLang = '" . $newtitle . "' where subtitleId = " . $oldSubtitle)) {
         $stmt->execute();
         echo "Subtitle has been updated! Please refresh the page to see your changes.<br />";
     }
