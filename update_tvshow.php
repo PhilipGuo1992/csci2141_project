@@ -18,11 +18,12 @@ $showId = $_GET["showId"];
 
 
 <?php
-if (true) {
+if (!empty($newName) && isset($showId)) { {
     if ($stmt = $connection->prepare("update tvshow set showName = '" . $newName . "' where showId = " . $showId)) {
         $stmt->execute();
         echo "TV show has been updated! Please refresh the page to see your changes.<br />";
     }
+else if(!empty($newYear) && isset($showId))
 	if ($stmt = $connection->prepare("update tvshow set releaseYear = '".$newYear."' where showId = " . $showId)) {
         $stmt->execute();
         echo "TV show has been updated! Please refresh the page to see your changes.<br />";
