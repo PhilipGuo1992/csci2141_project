@@ -11,7 +11,7 @@ $oldCredit = $_GET["oldCredit"];
 <select name="oldCredit"><?php printQueryToOptionList("select creditId,fullName from credit"); ?></select>
 <input id="newCredit" placeholder="Change the name to..." name="newCredit"></input>
 <input type="submit"></input>
-<h1><a href="admin.php">Go To HomePage</a></h1>
+<h5><a href="admin.php">Go To HomePage</a></h5>
 </form>
 
 
