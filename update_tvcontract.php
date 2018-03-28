@@ -1,5 +1,5 @@
 <?php
-include("dbconnect.php");
+include("dbconnect_local.php");
 
 $method = $_GET["method"];
 $newCredit = $_GET["newCredit"];
