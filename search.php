@@ -63,7 +63,8 @@ if ($boolOp == "allEpisodes") {
     while ($row = mysqli_fetch_row($result)) {
         echo("<tr>");
         echo "<td class='time'>" . $row[0] . "</td>";
-        echo "<td class='show'><div>" . $row[1] . "</div><br /><div class='timeslot' style='width:300px;color:rgb(135, 135, 135)'>sample text with some information relating to each show, maybe including the release date and other information<br /><a href='#' timeslot-id='" . $row[2] . "' style='float:right;font-size:11px;color:rgb(202, 173, 45);'>MORE INFO for #" . $row[2] . "</a></div><img src='https://placem.at/people?w=227&h=87&random=" . sha1($row[1]) ."' /></td><td id='admin'><table id='admin'><tr id='addslot'><td>^</td></tr><tr id='deleteslot'><td>X</td></tr><tr id='addslot'><td>V</td></tr></table></td>";
+        echo "<td class='show'><div>" . $row[1] . "</div><br /><div class='timeslot' style='width:300px;color:rgb(135, 135, 135)'>sample text with some information relating to each show, maybe including the release date and other information<br /><a href='#' timeslot-id='" . $row[2] . "' style='float:right;font-size:11px;color:rgb(202, 173, 45);'>MORE INFO for #" . $row[2] . "</a></div><img src='images/" .
+          explode(" -- ", strtolower($row[1]))[0] . ".jpg' /></td><td id='admin'><table id='admin'><tr id='addslot'><td>^</td></tr><tr id='deleteslot'><td>X</td></tr><tr id='addslot'><td>V</td></tr></table></td>";
             
         echo("</tr>");
         }
