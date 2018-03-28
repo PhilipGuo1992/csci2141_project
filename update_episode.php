@@ -7,7 +7,7 @@ $oldCredit = $_GET["oldCredit"];
 ?>
 
 <form action="update_movie.php" method="GET">
-<h3>Modify the Credit Name</h3>
+<h3>Modify the Episode</h3>
 <select name="oldCredit"><?php printQueryToOptionList("select episodeId, CONCAT(showName, '(S', seasonNumber, ' E', episodeNumber, ')') from episode JOIN tvshow"); ?></select>
 <input id="newCredit" placeholder="Change the episodeNumber to..." name="newCredit"></input>
 <input type="submit"></input>

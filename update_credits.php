@@ -11,6 +11,7 @@ $oldCredit = $_GET["oldCredit"];
 <select name="oldCredit"><?php printQueryToOptionList("select creditId,fullName from credit"); ?></select>
 <input id="newCredit" placeholder="Change the name to..." name="newCredit"></input>
 <input type="submit"></input>
+<h1><a href="admin.php">Go To HomePage</a></h1>
 </form>
 
 
@@ -19,7 +20,6 @@ if (isset($newCredit) && isset($oldCredit)) {
     if ($stmt = $connection->prepare("update credit set fullName = '" . $newCredit . "' where creditId = " . $oldCredit)) {
         $stmt->execute();
 		echo "Credit Name has been updated! Please refresh the page to see your changes.<br />";
-		header("Location:http://138.197.129.252/admin.php");
     }
 } else if (empty($newCredit)) {
 	echo "The Credit name is empty. Please enter in a non-empty name.<br />";
