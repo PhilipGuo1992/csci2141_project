@@ -13,6 +13,7 @@ $oldProfession = $_GET["oldProfession"];
 
 <input id="newProfession" placeholder="Change the name to..." name="newProfession"></input>
 <input type="submit"></input>
+<h5><a href="admin.php">Go To HomePage</a></h5>
 </form>
 
 <?php
